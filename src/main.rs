@@ -6,6 +6,9 @@
 extern crate alloc;
 
 mod status_led;
+mod tank;
+
+use tank::{Action, Command};
 
 use esp_firmware::{
     Board, Cell, Network, Sri, embassy_executor,
@@ -22,17 +25,6 @@ const DEBOUNCE_MS: u64 = 30;
 
 // Keep detecting and logging clicks while the cell waits for the network.
 static FIRE_REQUESTS: Channel<CriticalSectionRawMutex, (), 8> = Channel::new();
-
-#[derive(serde::Serialize)]
-enum Action {
-    Fire,
-}
-
-#[derive(serde::Serialize)]
-struct Command<'a> {
-    action: Action,
-    name: &'a str,
-}
 
 #[esp_firmware::main]
 async fn setup(_board: &mut Board, net: Network, peripherals: Peripherals, spawner: Spawner) {

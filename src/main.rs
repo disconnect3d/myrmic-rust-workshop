@@ -15,7 +15,10 @@ async fn setup(
     peripherals: Peripherals,
     spawner: Spawner,
 ) {
-
+    loop {
+        esp_firmware::log::info!("hello");
+        embassy_time::Timer::after(embassy_time::Duration::from_millis(500)).await;
+    }
 }
 
 

@@ -2179,8 +2179,10 @@ dependencies = [
 name = "my-firmware"
 version = "0.1.0"
 dependencies = [
+ "embassy-futures",
  "esp-firmware",
  "esp-firmware-build",
+ "serde",
 ]
 
 [[package]]

@@ -29,7 +29,9 @@ esp32c61 = ["esp-firmware/esp32c61", "ble"]
 ble = ["esp-firmware/ble"]
 
 [dependencies]
+embassy-futures = "0.1"
 esp-firmware = { git = "https://github.com/peeriot/myrmic.git", rev = "394b373b" }
+serde = { version = "1", default-features = false, features = ["derive"] }
 
 [build-dependencies]
 esp-firmware-build = { git = "https://github.com/peeriot/myrmic.git", rev = "394b373b" }
